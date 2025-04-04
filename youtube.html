@@ -1,0 +1,201 @@
+<html>
+<body>
+    <div id="container">
+    </div>
+
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "../build/three.module.js",
+                "three/addons/": "./jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+
+        import * as THREE from "/node_modules/three/build/three.module.js"
+        import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/controls/OrbitControls.js'
+        //import * as THREE from 'https://cdn.skypack.dev/three@0.137.5/build/three.module.js';
+        import { CSS3DRenderer, CSS3DObject } from "./3DCSS.js";
+        let camera, scene, renderer;
+        const container = document.getElementById( 'container' );
+        camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 5000 );
+        camera.position.set( 300, -500, 1500 );
+        scene = new THREE.Scene();
+        //renderer = new THREE.WebGLRenderer();
+        renderer = new CSS3DRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        //renderer.setAnimationLoop( animate );
+        //animate()
+        container.appendChild( renderer.domElement );
+         
+        var controls;
+        controls = new OrbitControls(camera, renderer.domElement);
+
+        
+
+        function Element( id, x, y, z, ry,autoplay=false ) {
+
+            const div = document.createElement( 'div' );
+            div.style.width = '40px';
+            div.style.height = '360px';
+            div.style.backgroundColor = '#000';
+            const iframe = document.createElement( 'iframe' );
+            iframe.style.width = '480px';
+            iframe.style.height = '360px';
+            iframe.style.border = '0px';
+            iframe.src = [ 'https://www.youtube.com/embed/', id, '?autoplay=1' ].join( '' );
+            if (autoplay) iframe.allow='autoplay'
+            
+            div.appendChild(iframe)
+            //container.appendChild(div)
+
+            const object = new CSS3DObject( div );
+            object.position.set( x, y, z );
+            object.rotation.y = ry;
+            return object;
+
+        }
+        function Element2( path, x, y, z, ry ) {
+            const div = document.createElement( 'div' );
+            div.style.width = '40px'
+            div.style.height = '360px';
+            div.style.backgroundColor = '#0ff';
+            const iframe = document.createElement( 'iframe' );
+            iframe.style.width = '480px';
+            iframe.style.height = '360px';
+            iframe.style.border = '0px';
+            iframe.src = path
+           
+            div.appendChild(iframe)
+            //container.appendChild(div)
+            const object = new CSS3DObject( div );
+            object.position.set( x, y, z );
+            object.rotation.y = ry;
+            
+            div.onmouseover=()=>{
+                iframe.style.width='1000px'
+                iframe.style.height='500px'
+            }
+            div.onmouseout=()=>{
+                iframe.style.width='480px'
+                iframe.style.height='360px'
+            }
+
+            return object;
+}
+
+function Element3( path, x, y, z, ry ) {
+            const div = document.createElement( 'div' );
+            div.style.width = '40px'
+            div.style.height = '360px';
+            div.style.backgroundColor = '#0ff';
+            const iframe = document.createElement( 'iframe' );
+            iframe.style.width = '1000px';
+            iframe.style.height = '500px';
+            iframe.style.border = '10px';
+            iframe.src = path
+           
+            div.appendChild(iframe)
+            //container.appendChild(div)
+            const object = new CSS3DObject( div );
+            object.position.set( x, y, z );
+            object.rotation.y = ry;
+            
+
+            return object;
+
+}
+        //new Element( 'SJOz3qjfQXU', 0, 0, 240, 0 )
+       
+            const group = new THREE.Group();
+            group.add( new Element( '', -1000, 200, -240, 0 ) );
+            group.add( new Element( 'pgGrQjYcm5A', 0, 200, -240, 0 ) ); //What is PI?
+            group.add(new Element( '', 0, 200, -760, -Math.PI/2 ) );
+            group.add( new Element( 'jzDYPFNdI0Y', 500, 200, - 760, Math.PI ) );
+            group.add( new Element('JJMPDABlKWA', 500, 200, -240, Math.PI/2 )) ;
+
+
+            
+         
+
+            
+            group.add( new Element('JKVKZsPuqKQ',500,-200,-240,0)) //motorola
+            //group.add( new Element('Ed1gsyxxwM0',500,-200,-240,0))mandelbrot
+            group.add( new Element2('./Vids/pixel1.mp4',0,-200,-760,-Math.PI/2))
+            group.add( new Element('ymV93I6fQKY',-500,0,-240,0))
+            group.add( new Element2('./orbit.html',0,-200,-760,0))
+            group.add( new Element3('https://fantastic-caramel-964df9.netlify.app/',-500,-500,-240,0))
+
+
+            
+           
+            scene.add( group );
+
+            
+
+            /* ORIGINAL
+            
+            const group = new THREE.Group();
+            group.add( new Element( 'SJOz3qjfQXU', 0, 0, 240, 0 ) );
+            group.add( new Element( 'Y2-xZ-1HE-Q', 240, 0, 0, Math.PI / 2 ) );
+            group.add( new Element( 'IrydklNpcFI', 0, 0, - 240, Math.PI ) );
+            group.add( new Element( '9ubytEsCaS0', - 240, 0, 0, - Math.PI / 2 ) );
+            scene.add( group );*/ 
+
+
+            window.addEventListener( 'resize', onWindowResize );
+
+
+
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+
+        }
+
+        document.onkeydown = function(e) {
+            console.log(e.keyCode)
+            e.preventDefault();
+            if (e.keyCode === 37) {       // left
+              console.log('left')
+              group.rotation.y-=.1
+            }
+            else if (e.keyCode === 39) {  // 
+              console.log('right')
+              group.rotation.y+=.1
+            }
+            else if (e.keyCode == 38){ 
+                console.log('up')
+                group.rotation.x+=.1
+                
+            }
+            else if (e.keyCode == 40){ 
+                console.log('down')
+                group.rotation.x-=.1
+            }
+        }
+
+        controls.update()
+        scene.position.z=200
+        animate()
+        function animate() {
+            //group.rotation.y+=0.01
+            
+            requestAnimationFrame( animate );
+            renderer.render( scene, camera );
+
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>

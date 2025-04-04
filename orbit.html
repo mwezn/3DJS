@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { 
+				margin: 0; 
+				/*background-image: url('./img/m.gif');*/
+				/*background-color: black;*/
+			}
+
+			video {
+				background-color: black;
+				border:2px solid black;
+			}
+			
+
+		</style>
+
+        
+	</head>
+	<body>
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "../build/three.module.js",
+					"three/addons/": "./jsm/"
+				}
+			}
+		</script>
+		<script type="module" src="./js/orbit.js"></script>
+        <nav>
+			<a href="/cube">3D Windows logo</a>
+			<a href="/circles">Ellipses</a>
+			<a href="/films">Film stack</a>
+			<a href="/orbit">Orbits</a>
+			<a href="/yt">Videos</a>
+		</nav>
+		</body>
+
+</html>

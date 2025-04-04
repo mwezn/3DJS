@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>3D Windows Logo</title>
+		<style>
+			body { margin: 100; }
+
+            div.section1 {
+                padding: 10;
+                border: 2px solid black;
+                display:grid;
+                grid-template-columns: 50vw 50vw;
+                grid-template-rows: 40vh;
+            }
+
+        
+            img {
+                max-width:50%;
+            }
+		</style>
+     <script type="module" src="./js/cube.js" defer>
+
+     </script>
+	</head>
+    <nav>
+        <a href="/cube">3D Windows logo</a>
+        <a href="/circles">Ellipses</a>
+        <a href="/films">Film stack</a>
+        <a href="/orbit">Orbits</a>
+    </nav>
+	<body></body>
+    <div class="section1">
+    <div>
+    <input type="range" id="x" min="-5" max="5" step="1" value="0">X</input>
+    <h3 id="xvalue"></h3>
+    
+    <input type="range" id="y" min="-5" max="5" step="1" value="0">Y</input>
+    <h3 id="yvalue"></h3>
+    <input type="range" id="z" min="-2" max="12" step="1" value="5">Z</input>
+    <h3 id="zvalue"></h3>
+    </div>
+    <div class="img"><img src="./logos.png"/></div>
+    </div>
+</html>
