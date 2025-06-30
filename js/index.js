@@ -114,7 +114,7 @@ function componentToHex(c) {
 
 
 
-let sprite = new THREE.TextureLoader().load('./img/m.gif')
+let sprite = new THREE.TextureLoader().load('./img/light.png')
 
 let bluestarMaterial= new THREE.PointsMaterial({
     color: 0xaa55ff,

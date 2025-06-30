@@ -5,6 +5,11 @@
 		<title>My first three.js app</title>
 		<style>
 			body { margin: 0; }
+            div.inputs {
+                position:fixed;
+                top:400px;
+                color: azure;
+            }
 		</style>
      <script type="module" src="./js/circles.js" defer>
         
@@ -19,13 +24,17 @@
    
     
 	<body></body>
+    <div class="inputs">
     <input type="range" id="x" min="-15" max="15" step="1" value="0">X</input>
     <h3 id="xvalue"></h3>
     
     <input type="range" id="y" min="-15" max="15" step="1" value="0">Y</input>
     <h3 id="yvalue"></h3>
-    <input type="range" id="z" min="-150" max="150" step="1" value="15">Z</input>
+    <input type="range" id="z" min="0" max="400" step="1" value="15">Z</input>
     <h3 id="zvalue"></h3>
-    <input type="range" id="d" min="1" max="16" step="1" value="1">Depth</input>
+    <input type="range" id="d" min="1" max="17" step="1" value="1">Depth</input>
     <h3 id="dvalue"></h3>
+    <input type="range" id="speed" min="0" max="100" step="0.1" value="1">Speed</input>
+    <h3 id="svalue"></h3>
+    </div>
 </html>

@@ -22,6 +22,17 @@ document.getElementById('zvalue').innerHTML=z.value;
 let d=document.getElementById('d')
 document.getElementById('dvalue').innerHTML=d.value;
 
+let speed=document.getElementById('speed')
+let spinrate=1
+speed.addEventListener('input', function () {
+    document.getElementById('svalue').innerHTML = speed.value;
+    spinrate=speed.value;
+    console.log(typeof(speed.value))
+    
+  }, false);
+
+
+
 x.addEventListener('input', function () {
     document.getElementById('xvalue').innerHTML = x.value;
     camera.position.set(x.value,y.value,z.value)
@@ -77,9 +88,9 @@ let line2=null;
 function timedFractal(){
   scene.remove(line)
   document.getElementById('dvalue').innerHTML = d.value;
-  fractalpoints=[]
-  drawBranch(0,0,90,d.value,50)
-  let g = new THREE.BufferGeometry().setFromPoints( fractalpoints );
+  //fractalpoints=[]
+  drawBranch2(0,0,90,d.value,50)
+  let g = new THREE.BufferGeometry().setFromPoints( fractalpoints2 );
   line = new THREE.Line( g, material );
  
   scene.add(line);
@@ -90,7 +101,7 @@ d.addEventListener('input', ()=> timedFractal(), false);
       
 
 const material = new THREE.LineBasicMaterial({
-	color: 0x0000ff
+	color: 0x00eeff
 });
 
 
@@ -125,9 +136,10 @@ scene.add(zoomedellipse)
 
 
 function animate() {
+  line.rotation.z+=Number(spinrate)
 
     
-    line.rotation.z+=0.8
+    
     
 
     renderer.render( scene, camera );

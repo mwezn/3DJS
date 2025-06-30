@@ -14,39 +14,32 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, '')))
 
 app.get('/', (req,res)=>{
-    res.sendFile(__dirname+'/index.html')
+    res.sendFile(__dirname+'/html/index.html')
 })
 
-app.get('/films', (req,res)=>{
-  res.sendFile(__dirname+'/films.html')
+app.get('/cube', (req,res)=>{
+    res.sendFile(__dirname+'/html/cube.html')
 })
 
 app.get('/circles', (req,res)=>{
-  res.sendFile(__dirname+'/circles.html')
+    res.sendFile(__dirname+'/html/circles.html')
 })
-app.get('/model', (req,res)=>{
-  res.sendFile(__dirname+'/models.html')
+
+app.get('/orbit', (req,res)=>{
+    res.sendFile(__dirname+'/html/orbit.html')
 })
+
 app.get('/game', (req,res)=>{
-  res.sendFile(__dirname+'/game.html')
+    res.sendFile(__dirname+'/html/game.html')
+})
+app.get('/yt', (req,res)=>{
+    res.sendFile(__dirname+'/html/youtube.html')
 })
 
-app.get('/orbit' , (req,res)=>{
-  res.sendFile(__dirname+'/orbit.html')
 
-})
-app.get('/cube', (req,res)=>{
-  res.sendFile(__dirname+'/cube.html')
-})
 
-app.get('/text', (req, res)=>{
-  res.sendFile(__dirname+'/webgl.html')
-})
 
-app.get('/yt', (req, res)=>{
-  res.sendFile(__dirname+'/youtube.html')
 
-})
 
 
 
