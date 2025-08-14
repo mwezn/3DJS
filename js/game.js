@@ -10,7 +10,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 document.body.appendChild( renderer.domElement );
 var scene = new THREE.Scene();
-var scene2 = new THREE.Scene();
 
 /**
 * Camera

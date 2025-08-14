@@ -10,13 +10,11 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 document.body.appendChild( renderer.domElement );
 var scene = new THREE.Scene();
-var scene2 = new THREE.Scene();
 
 /**
 * Camera
 **/
 
-console.log(OrbitControls)
 // Specify the portion of the scene visiable at any time (in degrees)
 var fieldOfView = 75;
 
@@ -40,11 +38,14 @@ camera.position.z = 3
 
 let vids=document.querySelectorAll('video')
 
-var varNames = ["plane0","plane1"];
+var varNames = ["plane0","plane1","plane2"];
 for (var i=0;i<varNames.length;i+=1){
     window[varNames[i]] = i*2
+
   
 }
+
+console.log(window["plane0"])
 
 
 
@@ -58,22 +59,21 @@ for (let i=0;i<vids.length;i++){
     const twoPlane = new THREE.PlaneGeometry( vids[i].videoWidth/100, vids[i].videoHeight/100 );
     //var plane = new THREE.Mesh( twoPlane, videoMaterial);
     window[varNames[i]]=new THREE.Mesh( twoPlane, videoMaterial);
-    window[varNames[i]].position.set(-20+i*8,0,-8)
+    window[varNames[i]].position.set(-20*(i-1),10*(i-1),-8)
     scene.add(window[varNames[i]]);
     
 }
 
-vids[0].playbackRate=5.0;
 
 let star;
 let points = [];
 let points2=[];
 let points3=[];
 
-for (let j=0;j<8000;j++){
+for (let j=0;j<80000;j++){
     star= new THREE.Vector3(
-        Math.random()*600- 300,
-        Math.random()*600- 300,
+        Math.random()*1600- 1300,
+        Math.random()*1600- 1300,
         Math.random()*-5000- 300,
     );
     points.push(star)
@@ -81,20 +81,20 @@ for (let j=0;j<8000;j++){
 
 console.log(points,points[10])
 
-for (let j=0;j<8000;j++){
+for (let j=0;j<80000;j++){
     star= new THREE.Vector3(
-        Math.random()*600- 300,
-        Math.random()*600- 300,
+        Math.random()*1600- 1300,
+        Math.random()*1600- 1300,
         Math.random()*-5000- 300,
     );
     points2.push(star)
     
 }
 
-for (let j=0;j<8000;j++){
+for (let j=0;j<80000;j++){
     star= new THREE.Vector3(
-        Math.random()*600- 300,
-        Math.random()*600- 300,
+        Math.random()*1600- 1300,
+        Math.random()*1600- 1300,
         Math.random()*-5000- 300,
     );
     points3.push(star)
@@ -118,19 +118,19 @@ let sprite = new THREE.TextureLoader().load('./img/light.png')
 
 let bluestarMaterial= new THREE.PointsMaterial({
     color: 0xaa55ff,
-    size: 25,
+    size: 2,
     map: sprite
 })
 
 let redstarMaterial= new THREE.PointsMaterial({
-    color: 0xff3355,
-    size: 14.5,
+    color: 0x11ff55,
+    size: 4.5,
     map: sprite
 })
 
 let greenstarMaterial= new THREE.PointsMaterial({
-    color: 0x1199ee,
-    size: 10.85,
+    color: 0x55ffee,
+    size: 3.85,
     map: sprite
 })
 
@@ -168,7 +168,7 @@ camera.position.z = 30;
 controls.update()
 
 
-plane0.position.z=10
+plane0.position.z=-20
 plane0.position.x=0
     
 
@@ -176,9 +176,12 @@ plane0.position.x=0
 
 function animate() {
     
-    stars.position.z+=.3
-    rstars.position.z+=.5
-    gstars.position.z+=1
+    stars.position.z+=10
+    rstars.position.z+=9
+    gstars.position.z+=10
+
+    if(stars.position.z==1000) stars.position.z=0;
+     if(gstars.position.z==1000) gstars.position.z=-500;
     
 
     

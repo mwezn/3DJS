@@ -51,16 +51,10 @@ var camera = new THREE.PerspectiveCamera(
   fieldOfView, aspectRatio, nearPlane, farPlane
 );
 
-const texture = new THREE.TextureLoader().load( "img/stars.jpg" );
-const texture2 = new THREE.TextureLoader().load( "img/Earth.jpg" );
-const texture3 = new THREE.TextureLoader().load( "img/optics.jpg" );
-const texture4 = new THREE.TextureLoader().load( "img/light.png" );
-const texture5 = new THREE.TextureLoader().load( "img/spin.jpg" );
+const earthTexture = new THREE.TextureLoader().load( "img/Earth.jpg" );
 const sunTexture = new THREE.TextureLoader().load( "img/sun.jpg" );
 
-texture5.wrapS = THREE.RepeatWrapping;
-texture5.wrapT = THREE.RepeatWrapping;
-texture5.repeat.set( 4, 4 )
+
 
 let sunRadius =695700
 let earthRadius=6378
@@ -69,14 +63,15 @@ let distance= 149000000
 
 const earth = new THREE.SphereGeometry( earthRadius/10000, 30, 30 ); 
 const sun = new THREE.SphereGeometry(sunRadius/10000,30,30)
-const material = new THREE.MeshBasicMaterial({map: texture} ); 
-const material2 = new THREE.MeshBasicMaterial({map: texture2} ); 
-const material3 = new THREE.MeshBasicMaterial({map: sunTexture} ); 
 
 
-//const sphere = new THREE.Mesh( geometry, material); 
-const sphere2 = new THREE.Mesh( sun, material3);
-const sphere3 = new THREE.Mesh( earth, material2);
+const earthMaterial = new THREE.MeshBasicMaterial({map: earthTexture} ); 
+const sunMaterial = new THREE.MeshBasicMaterial({map: sunTexture} ); 
+
+
+
+const sphere2 = new THREE.Mesh( sun, sunMaterial);
+const sphere3 = new THREE.Mesh( earth, earthMaterial);
 
 
 

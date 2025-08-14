@@ -87,7 +87,7 @@
             return object;
 }
 
-function Element3( path, x, y, z, ry ) {
+function Element3( path, x, y, z, rx,ry) {
             const div = document.createElement( 'div' );
             div.style.width = '40px'
             div.style.height = '360px';
@@ -102,7 +102,9 @@ function Element3( path, x, y, z, ry ) {
             //container.appendChild(div)
             const object = new CSS3DObject( div );
             object.position.set( x, y, z );
+            object.rotation.x=rx;
             object.rotation.y = ry;
+            
             
 
             return object;
@@ -111,9 +113,8 @@ function Element3( path, x, y, z, ry ) {
         //new Element( 'SJOz3qjfQXU', 0, 0, 240, 0 )
        
             const group = new THREE.Group();
-            group.add( new Element( 'tlCKXknvUSg', -480, 200, -760, Math.PI/2 ) );
-            group.add( new Element( 'pgGrQjYcm5A', 0, 200, -240, 0) ); //What is PI?
-            group.add(new Element( '', 0, 200, -760, -Math.PI/2 ) );
+            group.add( new Element( 'Al3x_Met8yg', -1000, 200, -760, Math.PI/2 ) );
+            group.add( new Element( 'pgGrQjYcm5A', 0, 200, -24, 0) ); //What is PI?
             group.add( new Element( 'jzDYPFNdI0Y', 500, 200, - 760, Math.PI ) );
             group.add( new Element('JJMPDABlKWA', 500, 200, -760, Math.PI/2 )) ;
 
@@ -123,11 +124,9 @@ function Element3( path, x, y, z, ry ) {
 
             
             group.add( new Element('JKVKZsPuqKQ',100,-200,-760,Math.PI/2)) //motorola
-            //group.add( new Element('Ed1gsyxxwM0',500,-200,-240,0))mandelbrot
-            group.add( new Element2('./Vids/pixel1.mp4',0,-200,-760,-Math.PI/2))
             group.add( new Element('ymV93I6fQKY',-500,0,-240,0))
-            group.add( new Element2('./orbit.html',0,-200,-760,0))
-            group.add( new Element3('https://fantastic-caramel-964df9.netlify.app/',-500,-600,-760,0))
+            group.add( new Element3('https://fantastic-caramel-964df9.netlify.app/',-500,-600,-760,0,0))
+            group.add( new Element3('../img/OIP.webp', 0, -1000, 0,Math.PI/2,0))
 
 
             
@@ -182,10 +181,10 @@ function Element3( path, x, y, z, ry ) {
         }
 
         controls.update()
-        scene.position.z=200
+        scene.position.z=20
         animate()
         function animate() {
-            //group.rotation.y+=0.01
+            group.rotation.y+=.1
             
             requestAnimationFrame( animate );
             renderer.render( scene, camera );

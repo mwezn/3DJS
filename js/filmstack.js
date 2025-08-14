@@ -76,9 +76,7 @@ for (let i=0;i<vids.length;i++){
     
 }
 
-plane2.rotation.y=0.5
-plane3.rotation.y=0.3
-plane5.rotation.y=0.2
+
 
 let line,line2,cubelines1,cubelines2,cubelines3,cubelines4,cube ,cube2,cube3,cube4
 
@@ -96,7 +94,7 @@ function addCubesToScene(){
     const edges3 = new THREE.EdgesGeometry( geometry ); 
     const edges4 = new THREE.EdgesGeometry( geometry ); 
 
-    var underTexture=new THREE.VideoTexture(vids[7]);
+    var underTexture=new THREE.VideoTexture(vids[0]);
     var underworld=new THREE.MeshBasicMaterial({map: underTexture} )
 //const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial( { color: 0xffff00, linewidth:2} ) );
     line = new THREE.Mesh(underClip, underworld);
@@ -158,7 +156,7 @@ function animate() {
 
 
     plane0.rotation.y+=0.002
-    plane1.rotation.y+=0.002
+    /*plane1.rotation.y+=0.002
     plane2.rotation.y+=0.002
     plane3.rotation.y+=0.002
     plane4.rotation.y+=0.002
@@ -194,7 +192,7 @@ function animate() {
 
     //scene.position.z-=0.1
     gridHelper.position.z+=0.1
-    gridHelper2.position.z+=0.1
+    gridHelper2.position.z+=0.1*/
 
 
 
