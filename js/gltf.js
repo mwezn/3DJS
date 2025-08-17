@@ -22,11 +22,30 @@ cssRenderer.domElement.style.position = 'absolute';
 cssRenderer.domElement.style.top = '0';
 document.body.appendChild(cssRenderer.domElement);
 
-// Create an iframe element
-//Kideko The Jam https://www.youtube.com/watch?v=ETGKsBqVhdw
-//Rick Astley Never gonna give you up https://www.youtube.com/embed/dQw4w9WgXcQ
-//Trevino Mushrooms c69-JlvNNec
-const div=document.createElement('div')
+
+function Element( id, x, y, z, ry,css,autoplay=false ) {
+
+            const div = document.createElement( 'div' );
+            const iframe = document.createElement('iframe');
+            iframe.style.border = '0px';
+            iframe.src = [ 'https://www.youtube.com/embed/', id, '?autoplay=1' ].join( '' );
+            if (autoplay) iframe.allow='autoplay'
+            css=='monitor'?div.className='css3d-object':div.className='oldtv'
+            
+            div.appendChild(iframe)
+            //container.appendChild(div)
+
+            const object = new CSS3DObject( div );
+            object.position.set( x, y, z );
+            object.rotation.y = ry;
+            object.scale.set(0.01, 0.01, 0.01);
+            return object;
+        }
+
+const tupac= new Element('jdWXS3BPt_0',0,0,0,0,'monitor')
+const quest = new Element('jzDYPFNdI0Y',-3,0,-6,0,'oldtv')
+
+/*const div=document.createElement('div')
 const iframe = document.createElement('iframe');
 //iframe.src = 'https://www.youtube.com/embed/c69-JlvNNec'; // Replace with your video URL
 iframe.src='https://www.youtube.com/embed/jdWXS3BPt_0'
@@ -37,9 +56,9 @@ div.appendChild(iframe)
 // Wrap iframe in a CSS3DObject
 const cssObject = new CSS3DObject(div);
 cssObject.position.set(0, 0, 0); // Position in the 3D scene
-cssObject.scale.set(0.01, 0.01, 0.01); // Scale down to fit the scene
+cssObject.scale.set(0.01, 0.01, 0.01); // Scale down to fit the scene*/
 
-scene.add(cssObject);
+scene.add(tupac,quest);
 
 
 
@@ -67,7 +86,7 @@ scene.add(cssObject);
 
 
 
-    let monitor;
+    let monitor,oldset, gaming;
 
     var loader = new THREE.GLTFLoader()//.setPath('../monitor/');    
     // Load a glTF resource
@@ -88,12 +107,30 @@ scene.add(cssObject);
         console.error( error );
     } );
 
-    loader.load('../tvaudio/audioblendcolor.gltf',function ( gltf ) {
-        //gltf.scene.rotation.y=-Math.PI/2
+    loader.load('../audioblend2.glb',function ( gltf ) {
+        gltf.scene.rotation.y=-Math.PI/2
         scene.add( gltf.scene );
         
         
     
+        gltf.scene.traverse(function(child){
+            console.log(child.name);
+        })
+
+        
+        
+        
+    }, undefined, function ( error ) {
+        console.error( error );
+    } );
+
+    loader.load('../gaming-pc/scene.gltf',function ( gltf ) {
+        gaming=gltf.scene;
+        gaming.position.z=-20
+        gaming.position.x=20
+        //gaming.rotation.y=-Math.PI/2
+
+        scene.add( gaming );
         gltf.scene.traverse(function(child){
             console.log(child.name);
         })
@@ -118,6 +155,8 @@ scene.add(cssObject);
     
 
     function animate() {
+
+        //if(gaming) gaming.rotation.y+=0.01
         
         requestAnimationFrame(animate);
         webGLRenderer.render(scene, camera);
