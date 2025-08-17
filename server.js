@@ -18,7 +18,7 @@ app.get('/', (req,res)=>{
 })
 
 app.get('/pano', (req, res)=>{
-    res.sendFile(__dirname+'/panorama2.html')
+    res.sendFile(__dirname+'/panorama.html')
 })
 
 app.get('/cube', (req,res)=>{

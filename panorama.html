@@ -45,8 +45,8 @@
 			
 			)
 
-			//init();
-			uv();
+			init();
+		
 
 
 			function uv(){
@@ -94,11 +94,11 @@
 				controls.enableZoom = false;
 				controls.enablePan = false;
 				controls.enableDamping = true;
-				controls.rotateSpeed = - 0.25;
+				controls.rotateSpeed = 0.5;
 
                 let numFaces=6;
 
-				const textures = getTexturesFromAtlasFile( 'img/mountain.jpg', numFaces );
+				const textures = getTexturesFromAtlasFile( 'img/sun_temple_stripe.jpg', numFaces );
                 console.log(textures)
 				const materials = [];
 

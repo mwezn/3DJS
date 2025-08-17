@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 	<head>
         
@@ -8,20 +8,38 @@
 			body { 
 				margin: 0; 
 			}
+
+			iframe {
+				position: absolute;
+				width:310px;
+				height:210px;
+				border: none;
+				backface-visibility: hidden; /* Hides the backside */
+				transform: rotateY(0deg); /* Adjust rotation if needed */
+				transform-style: preserve-3d;
+				perspective: 10px;
+			}
+
+			.css3d-object {
+				position: relative;
+				width:310px;
+				height:190px;
+				background-color: aqua;
+			
+			}
         </style>
         <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
 		<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+		
 
 		
 
         
 	</head>
+	
 	<body>
 		<script type="module" src="../js/gltf.js"></script>
-
-		<nav>
-			<a href="cube">3D Windows logo</a>
-		</nav>
+		
 		</body>
 
 </html>

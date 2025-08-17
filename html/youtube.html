@@ -12,13 +12,14 @@
             }
         }
     </script>
+   
 
     <script type="module">
 
         import * as THREE from "/node_modules/three/build/three.module.js"
         import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/controls/OrbitControls.js'
         //import * as THREE from 'https://cdn.skypack.dev/three@0.137.5/build/three.module.js';
-        import { CSS3DRenderer, CSS3DObject } from "./3DCSS.js";
+        import { CSS3DRenderer, CSS3DObject } from "../3DCSS.js";
         let camera, scene, renderer;
         const container = document.getElementById( 'container' );
         camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 5000 );
@@ -115,6 +116,7 @@ function Element3( path, x, y, z, rx,ry) {
             const group = new THREE.Group();
             group.add( new Element( 'Al3x_Met8yg', -1000, 200, -760, Math.PI/2 ) );
             group.add( new Element( 'pgGrQjYcm5A', 0, 200, -24, 0) ); //What is PI?
+            group.add( new Element('7GClmFSoeuo',-500,400,-240,0))
             group.add( new Element( 'jzDYPFNdI0Y', 500, 200, - 760, Math.PI ) );
             group.add( new Element('JJMPDABlKWA', 500, 200, -760, Math.PI/2 )) ;
 
@@ -124,7 +126,7 @@ function Element3( path, x, y, z, rx,ry) {
 
             
             group.add( new Element('JKVKZsPuqKQ',100,-200,-760,Math.PI/2)) //motorola
-            group.add( new Element('ymV93I6fQKY',-500,0,-240,0))
+            group.add( new Element('L4QxU0mTATM',-500,0,-240,0))
             group.add( new Element3('https://fantastic-caramel-964df9.netlify.app/',-500,-600,-760,0,0))
             group.add( new Element3('../img/OIP.webp', 0, -1000, 0,Math.PI/2,0))
 
@@ -184,7 +186,7 @@ function Element3( path, x, y, z, rx,ry) {
         scene.position.z=20
         animate()
         function animate() {
-            group.rotation.y+=.1
+            //group.rotation.y+=.1
             
             requestAnimationFrame( animate );
             renderer.render( scene, camera );
