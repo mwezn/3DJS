@@ -20,19 +20,46 @@
 				perspective: 10px;
 			}
 
+			video {
+				position: absolute;
+				width:310px;
+				height:200px;
+				border: none;
+				backface-visibility: hidden; /* Hides the backside */
+				transform: rotateY(0deg); /* Adjust rotation if needed */
+				transform-style: preserve-3d;
+				perspective: 10px;
+			}
+
 			.css3d-object {
 				position: relative;
 				width:310px;
 				height:190px;
-				background-color: aqua;
+				background-color: rgb(0, 0, 0);
 				z-index:-10;
 			
 			}
 
+			
+
 			.oldtv {
-				width: 250px;
-				height:200px;
+				position: relative;
+				width: 600px;
+				height:330px;
+				background-color: blue;
 			}
+
+			.oldtv iframe {
+				position: absolute;
+				width:600px;
+				height:330px;
+				border: none;
+				backface-visibility: hidden; /* Hides the backside */
+				transform: rotateY(0deg); /* Adjust rotation if needed */
+				transform-style: preserve-3d;
+				perspective: 10px;
+			}
+
         </style>
         <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
 		<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>

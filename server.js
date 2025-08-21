@@ -36,6 +36,12 @@ app.get('/3D', (req, res)=>{
     res.sendFile(__dirname+'/html/gltf.html')
 })
 
+app.get('/key', (req, res)=>{
+    res.sendFile(__dirname+'/html/keyboard.html')
+})
+
+
+
 app.get('/game', (req,res)=>{
     res.sendFile(__dirname+'/html/game.html')
 })

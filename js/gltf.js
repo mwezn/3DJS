@@ -9,6 +9,9 @@ import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.119.1/examples
 
     import { CSS3DRenderer, CSS3DObject } from "../3DCSS.js";
 
+    const space= new THREE.TextureLoader().load('../img/AboveEarth.jpg')
+    //scene.background=space;
+
 
 
 
@@ -40,25 +43,53 @@ function Element( id, x, y, z, ry,css,autoplay=false ) {
             object.rotation.y = ry;
             object.scale.set(0.01, 0.01, 0.01);
             return object;
+}
+
+function vidElement( path, x, y, z, ry,css,autoplay,loop) {
+            const div = document.createElement( 'div' );
+            const video = document.createElement('video');
+            video.muted=true;
+            video.src=path;
+            if(loop) video.loop=true;
+            if (autoplay) video.autoplay=true;
+            css=='monitor'?div.className='css3d-object':div.className='oldtv'
+            div.appendChild(video)
+            const object = new CSS3DObject( div );
+            object.position.set( x, y, z );
+            object.rotation.y = ry;
+            object.scale.set(0.01, 0.01, 0.01);
+            return object;
+}
+
+function Element2( path, x, y, z, ry,css,autoplay=false,loop) {
+
+            const div = document.createElement( 'div' );
+            const iframe = document.createElement('iframe');
+            iframe.style.border = '0px';
+            iframe.src = path
+            if(loop) iframe.loop='true'
+            if (autoplay) iframe.allow='autoplay'
+            css=='monitor'?div.className='css3d-object':div.className='oldtv'
+            
+            div.appendChild(iframe)
+            //container.appendChild(div)
+
+            const object = new CSS3DObject( div );
+            object.position.set( x, y, z );
+            object.rotation.y = ry;
+            object.scale.set(0.01, 0.01, 0.01);
+            return object;
         }
 
-const tupac= new Element('jdWXS3BPt_0',0,0,0,0,'monitor')
-const quest = new Element('jzDYPFNdI0Y',-3,0,-6,0,'oldtv')
+const tupac= new Element('uQXqu5oU1vE',0,0,0,0,'monitor')
+//const quest = new Element('jzDYPFNdI0Y',-3,2.9,-6.5,0,'oldtv') //neo question 'jzDYPFNdI0Y'
+//const quest2 = new Element2('../Mirror.mp4',-3,2.9,-6.5,0,'oldtv',false) 
+const quest2= new Element('hBie-xdbLeM',-3,2.9,-6.5,0,'oldtv',false)
+const scope= new Element2('../audio.html',5,0,0,0,'monitor')
+const scope2= new vidElement('../Kaleidoscope.mp4',-5,0,0,0,'monitor',true,true)
 
-/*const div=document.createElement('div')
-const iframe = document.createElement('iframe');
-//iframe.src = 'https://www.youtube.com/embed/c69-JlvNNec'; // Replace with your video URL
-iframe.src='https://www.youtube.com/embed/jdWXS3BPt_0'
-iframe.style.border = '0';
-div.className='css3d-object'
-div.appendChild(iframe)
 
-// Wrap iframe in a CSS3DObject
-const cssObject = new CSS3DObject(div);
-cssObject.position.set(0, 0, 0); // Position in the 3D scene
-cssObject.scale.set(0.01, 0.01, 0.01); // Scale down to fit the scene*/
-
-scene.add(tupac,quest);
+scene.add(tupac,quest2,scope,scope2);
 
 
 
@@ -94,24 +125,16 @@ scene.add(tupac,quest);
 
         //monitor=gltf.scene;
         scene.add(gltf.scene);
+        // Assuming 'gltf.scene' is the loaded model
+        const clonedModel = gltf.scene.clone();
+        const clonedModel2 = gltf.scene.clone();
+        scene.add(clonedModel,clonedModel2);
+
+// Optionally, position or modify the cloned model
+        clonedModel.position.set(5, 0, 0);
+        clonedModel2.position.set(-5,0,0);
+
        
-    
-        gltf.scene.traverse(function(child){
-            console.log(child.name);
-        })
-
-        
-        
-        
-    }, undefined, function ( error ) {
-        console.error( error );
-    } );
-
-    loader.load('../audioblend2.glb',function ( gltf ) {
-        gltf.scene.rotation.y=-Math.PI/2
-        scene.add( gltf.scene );
-        
-        
     
         gltf.scene.traverse(function(child){
             console.log(child.name);
@@ -126,9 +149,9 @@ scene.add(tupac,quest);
 
     loader.load('../gaming-pc/scene.gltf',function ( gltf ) {
         gaming=gltf.scene;
-        gaming.position.z=-20
-        gaming.position.x=20
-        //gaming.rotation.y=-Math.PI/2
+        gaming.position.z=-5
+        
+        gaming.rotation.y=-Math.PI/2
 
         scene.add( gaming );
         gltf.scene.traverse(function(child){
