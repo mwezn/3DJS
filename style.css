@@ -1,0 +1,76 @@
+body { 
+				margin: 0; 
+			}
+
+			iframe {
+				position: absolute;
+				width:310px;
+				height:210px;
+				border: none;
+				backface-visibility: hidden; /* Hides the backside */
+				transform: rotateY(0deg); /* Adjust rotation if needed */
+				transform-style: preserve-3d;
+				perspective: 10px;
+			}
+
+			video {
+				position: absolute;
+				width:310px;
+				height:200px;
+				border: none;
+				backface-visibility: hidden; /* Hides the backside */
+				transform: rotateY(0deg); /* Adjust rotation if needed */
+				transform-style: preserve-3d;
+				perspective: 10px;
+			}
+
+			.css3d-object {
+				position: relative;
+				width:310px;
+				height:190px;
+				background-color: rgb(0, 0, 0);
+				z-index:-10;
+			
+			}
+
+            .monitor {
+   
+                position: relative;
+				width:800px;
+				height:500px;
+				background-color: rgb(0, 0, 0);
+
+            }
+
+            .monitor iframe {
+
+                position: absolute;
+				width:800px;
+				height:500px;
+				border: none;
+				backface-visibility: hidden; /* Hides the backside */
+				transform: rotateY(0deg); /* Adjust rotation if needed */
+				transform-style: preserve-3d;
+				perspective: 10px;
+
+            }
+
+			
+
+			.oldtv {
+				position: relative;
+				width: 600px;
+				height:330px;
+				background-color: blue;
+			}
+
+			.oldtv iframe {
+				position: absolute;
+				width:600px;
+				height:330px;
+				border: none;
+				backface-visibility: hidden; /* Hides the backside */
+				transform: rotateY(0deg); /* Adjust rotation if needed */
+				transform-style: preserve-3d;
+				perspective: 10px;
+			}
