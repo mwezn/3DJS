@@ -8,6 +8,7 @@ var bodyParser=require("body-parser")
 
 
 
+
 app.use(bodyParser.urlencoded({extended: false}))
 
 
@@ -18,7 +19,11 @@ app.get('/', (req,res)=>{
 })
 
 app.get('/pano', (req, res)=>{
-    res.sendFile(__dirname+'/panorama.html')
+    res.sendFile(__dirname+'/html/panorama.html')
+})
+
+app.get('/pano2', (req, res)=>{
+    res.sendFile(__dirname+'/html/panorama2.html')
 })
 
 app.get('/cube', (req,res)=>{
@@ -40,8 +45,6 @@ app.get('/key', (req, res)=>{
     res.sendFile(__dirname+'/html/keyboard.html')
 })
 
-
-
 app.get('/game', (req,res)=>{
     res.sendFile(__dirname+'/html/game.html')
 })
@@ -52,6 +55,8 @@ app.get('/yt', (req,res)=>{
 app.get('/stack', (req, res)=>{
     res.sendFile(__dirname+'/html/images.html')
 })
+
+
 
 
 

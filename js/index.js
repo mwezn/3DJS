@@ -57,6 +57,9 @@ for (let i=0;i<vids.length;i++){
     console.log(vids[i].videoWidth)
     var videoMaterial =  new THREE.MeshBasicMaterial( {map: vidTexture} );
     const twoPlane = new THREE.PlaneGeometry( vids[i].videoWidth/100, vids[i].videoHeight/100 );
+
+   
+   //const curvedSur= new THREE.SphereGeometry(10,10);
     //var plane = new THREE.Mesh( twoPlane, videoMaterial);
     window[varNames[i]]=new THREE.Mesh( twoPlane, videoMaterial);
     window[varNames[i]].position.set(-20*(i-1),10*(i-1),-8)

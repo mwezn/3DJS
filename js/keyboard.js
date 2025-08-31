@@ -21,7 +21,7 @@ audioLoader.load( '../keypress.mp3', function( buffer ) {
 	
 });
 
-    const space= new THREE.TextureLoader().load('../img/meta.jpg')
+    const space= new THREE.TextureLoader().load('../img/light.png')
     //scene.background=space;
 
 
@@ -67,7 +67,7 @@ document.body.appendChild(cssRenderer.domElement);
 
 
 
-    let monitor, keyboard,mixer, clock,keypress,anim
+    let monitor, keyboard,mixer, clock,keypress,anim,intro,intromixer,oldtv
 
     var loader = new THREE.GLTFLoader()//.setPath('../monitor/');    
     // Load a glTF resource
@@ -88,6 +88,8 @@ document.body.appendChild(cssRenderer.domElement);
         console.error( error );
     } ); 
 
+
+
     loader.load('../RGB/edit.glb',function ( gltf ) {
         keypress=gltf.animations
         keyboard=gltf.scene;
@@ -96,23 +98,19 @@ document.body.appendChild(cssRenderer.domElement);
         keyboard.scale.set(8,8,8)
         scene.add(keyboard);
 
-     /*  mixer = new THREE.AnimationMixer(keyboard);
+      /*mixer = new THREE.AnimationMixer(keyboard);
                 keypress.forEach((clip,i) => {
                     console.log(clip,i)
                     mixer.clipAction(clip).play();
         }); */
-
-        
-        
-        
     }, undefined, function ( error ) {
         console.error( error );
     } );
 
     document.addEventListener('keydown', (event) => {
     if (!keyboard || !keypress) return;
-
-    sound.play();
+     console.log(event.keyCode)
+    //sound.play();
     anim = new THREE.AnimationMixer(keyboard);
 
     const playAnimationPair = (index, time) => {
@@ -182,126 +180,8 @@ document.body.appendChild(cssRenderer.domElement);
 });
 
 
-    /*document.addEventListener('keydown', (event) => {
 
-        sound.play();
-        anim = new THREE.AnimationMixer(keyboard);
-        let action,action2
-    if (!keyboard) return; // Ensure model is loaded
-    if(!keypress) return
-    switch (event.key) {
-        case 'ArrowUp': // Move forward
-            keyboard.position.z -= 0.1;
-            console.log('UP PRESSED')
-            break;
-        case 'ArrowDown': // Move backward
-            //keyboard.position.z += 0.1;
-            //keyboard.rotation.y += 0.1;
-            break
-        case 's': // Move backward
-            //keyboard.position.z += 0.1;
-            //keyboard.rotation.y += 0.1;
-            action = anim.clipAction(keypress[2]); // Assuming the first animation
-            action2 =anim.clipAction(keypress[3])
-            action.time = 3;
-            action2.time=3;
-            action.setLoop(THREE.LoopOnce)
-            action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play();
-            break
-        case 'd': 
-            action = anim.clipAction(keypress[4]); // Assuming the first animation
-            action2 =anim.clipAction(keypress[5])
-            action.time = 3.4;
-            action2.time=3.4;
-            action.setLoop(THREE.LoopOnce)
-            action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play()
-            break
-        case 'f': 
-            action = anim.clipAction(keypress[6]); // Assuming the first animation
-            action2 =anim.clipAction(keypress[7])
-            action.time = 3.8;
-            action2.time=3.8;
-            action.setLoop(THREE.LoopOnce)
-            action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play()
-            break
-        case 'g': 
-            action = anim.clipAction(keypress[8]); // Assuming the first animation
-            action2 =anim.clipAction(keypress[9])
-            action.time = 4.2;
-            action2.time=4.2;
-            action.setLoop(THREE.LoopOnce)
-            action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play()
-            break
-        case 'h': 
-            action = anim.clipAction(keypress[10]); // Assuming the first animation
-            action2 =anim.clipAction(keypress[11])
-            action.time = 4.6;
-            action2.time=4.6;
-            action.setLoop(THREE.LoopOnce)
-            action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play()
-            break
-        case 'j': 
-            action = anim.clipAction(keypress[12]); // Assuming the first animation
-            action2 =anim.clipAction(keypress[13])
-            action.time = 5;
-            action2.time=5;
-            action.setLoop(THREE.LoopOnce)
-            action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play()
-            break
-
-        case 'ArrowLeft': // Rotate left
-            //keyboard.rotation.y += 0.1;
-            action = anim.clipAction(keypress[0]); // Assuming the first animation
-            action2 =anim.clipAction(keypress[1])
-            console.log(action,keypress[20])
-            action.time = 1.8;
-            action2.time=1.8;
-            action.setLoop(THREE.LoopOnce)
-            action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play()
-            break;
-        case 'ArrowRight': // Rotate right
-            keyboard.rotation.y -= 0.1;
-            break;
-        case ' ': // Spacebar to trigger animation (if any)
-            break
-
-           
-    }
-});*/
-
-/*
- 
-            console.log('SPACE')
-            const action = anim.clipAction(keypress[3]); // Assuming the first animation
-            const action2 =anim.clipAction(keypress[6])
-            console.log(action,keypress[20])
-            action.time = 1.4;
-            action2.time=1.4;
-            //action.setLoop(THREE.LoopOnce)
-           // action2.setLoop(THREE.LoopOnce)
-            action.play();
-            action2.play()
-            break;
-            
-
-*/
-
-
-    clock = new THREE.Clock();
+   clock = new THREE.Clock();
 
     function Element2( path, x, y, z, ry,css) {
 
@@ -309,6 +189,7 @@ document.body.appendChild(cssRenderer.domElement);
             const iframe = document.createElement('iframe');
             iframe.style.border = '0px';
             iframe.src = path
+            
             //if(loop) iframe.loop='true'
             //if (autoplay) iframe.allow='autoplay'
             //css=='monitor'?div.className='css3d-object':div.className='oldtv'
@@ -324,19 +205,22 @@ document.body.appendChild(cssRenderer.domElement);
             return object;
         }
     
-    const scope= new Element2('https://www.wikipedia.org/',0,3,0,0,'monitor')
+    const scope= new Element2('https://www.terminaltemple.com/',0,3,0,0,'monitor')
 
     scene.add(scope)
+
+    const iframe=document.querySelector('iframe')
+
+    
+    
 
 
     
     function animate() {
-
         var delta = clock.getDelta();
         if ( mixer ) mixer.update( delta );
         if (anim)   anim.update(delta)
-
-         
+        if (intromixer)   intromixer.update(delta)
         requestAnimationFrame(animate);
         webGLRenderer.render(scene, camera);
         cssRenderer.render(scene, camera);

@@ -10,17 +10,10 @@ document.body.appendChild( renderer.domElement );
 
 let controls = new OrbitControls( camera, renderer.domElement );
 				controls.enableZoom = true;
-				controls.enablePan = true;
-				controls.enableDamping = true;
-				controls.rotateSpeed = 0.5;
-
-const geometry = new THREE.BoxGeometry( 1, 1, 1);
-  var blue =  new THREE.MeshStandardMaterial( { color: 0x247aff} );
-  const edges = new THREE.EdgesGeometry( geometry ); 
-  const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial( { color: 0xaa99ff, linewidth:3} ) );
-  const cube = new THREE.Mesh( geometry, blue);
-  //scene.add(cube)
-  scene.add( line );
+				//controls.enablePan = true;
+				//controls.enableDamping = true;
+				//controls.rotateSpeed = 0.5;
+  
 
   const light =new THREE.DirectionalLight(0xffffff,5)
   light.position.set(2,0,2)
@@ -32,8 +25,8 @@ const geometry = new THREE.BoxGeometry( 1, 1, 1);
 const geo = new THREE.PlaneGeometry(20, 20, 50, 50);
 const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true });
 const plane = new THREE.Mesh(geo, material);
-plane.rotation.x=4;
-plane.rotation.y=3;
+//plane.rotation.x=4;
+//plane.rotation.y=3;
 scene.add(plane);
 
 // Request microphone access
@@ -99,18 +92,19 @@ renderer.render(scene ,camera)
 
 
 // Position Camera
-camera.position.z = 10;
+camera.position.z = 30;
 
 // Animate Wave
 function animateWave(arrVal) {
-  //const time = Date.now() * 0.001; // Time-based animation
+  const time = Date.now() * 0.001; // Time-based animation
   const vertices = plane.geometry.attributes.position.array;
   console.log(vertices)
 
   for (let j = 0; j < vertices.length; j += 3) {
     const x = vertices[j];
     const y = vertices[j + 1];
-    vertices[j + 2] = arrVal*Math.sin(x *arrVal + 250)/100 + arrVal*Math.cos(y *arrVal + 250)/100; // Wave formula
+    vertices[j + 2] = Math.sin(x*+time) + Math.cos(y*+time); 
+    // Wave formula
   }
 
   plane.geometry.attributes.position.needsUpdate = true; // Update geometry

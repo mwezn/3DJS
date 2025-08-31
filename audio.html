@@ -3,13 +3,22 @@
         <style>
             canvas {
                 border:2px solid black;
-                background-size: 600px 483px;
+                width:90vw;
+                height:50vh;
 
             }
+            video {
+                border: 2px solid black;
+                width:90vw;
+                height:50vh;
+            }
+
+
         </style>
     </head>
 <body>
-<canvas id="c" width="1024" height="512"></canvas>
-<script src='audio.js' type="module"></script>
+<canvas id="audio" width="1024" height="512"></canvas>
+<video id="video" autoplay></video>
+<script src='audioWave.js' type="module"></script>
 </body>
 </html>

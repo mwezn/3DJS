@@ -85,7 +85,7 @@ const tupac= new Element('uQXqu5oU1vE',0,0,0,0,'monitor')
 //const quest = new Element('jzDYPFNdI0Y',-3,2.9,-6.5,0,'oldtv') //neo question 'jzDYPFNdI0Y'
 //const quest2 = new Element2('../Mirror.mp4',-3,2.9,-6.5,0,'oldtv',false) 
 const quest2= new Element('hBie-xdbLeM',-3,2.9,-6.5,0,'oldtv',false)
-const scope= new Element2('../audio.html',5,0,0,0,'monitor')
+const scope= new Element2('https://fantastic-caramel-964df9.netlify.app/',5,0,0,0,'monitor')
 const scope2= new vidElement('../Kaleidoscope.mp4',-5,0,0,0,'monitor',true,true)
 
 
