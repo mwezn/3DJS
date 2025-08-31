@@ -51,8 +51,8 @@ var camera = new THREE.PerspectiveCamera(
   fieldOfView, aspectRatio, nearPlane, farPlane
 );
 
-const earthTexture = new THREE.TextureLoader().load( "img/Earth.jpg" );
-const sunTexture = new THREE.TextureLoader().load( "img/sun.jpg" );
+const earthTexture = new THREE.TextureLoader().load( "../img/Earth.jpg" );
+const sunTexture = new THREE.TextureLoader().load( "../img/sun.jpg" );
 
 
 

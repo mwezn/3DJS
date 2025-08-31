@@ -110,7 +110,7 @@ document.body.appendChild(cssRenderer.domElement);
     document.addEventListener('keydown', (event) => {
     if (!keyboard || !keypress) return;
      console.log(event.keyCode)
-    //sound.play();
+    sound.play();
     anim = new THREE.AnimationMixer(keyboard);
 
     const playAnimationPair = (index, time) => {
