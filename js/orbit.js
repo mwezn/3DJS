@@ -1,5 +1,5 @@
 
-import * as THREE from "../node_modules/three/build/three.module.js"
+//import * as THREE from "../node_modules/three/build/three.module.js"
 import { FontLoader, TextGeometry } from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 // Create the scene and a camera to view it
 const renderer = new THREE.WebGLRenderer();
