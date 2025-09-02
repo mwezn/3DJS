@@ -62,7 +62,7 @@ gridHelper.position.y=-8
 gridHelper2.position.y=20
 scene.add( gridHelper ,gridHelper2);
 
-const texture5 = new THREE.TextureLoader().load( "./img/star.png" );
+const texture5 = new THREE.TextureLoader().load( "../img/star.png" );
 texture5.wrapS = THREE.RepeatWrapping;
 texture5.wrapT = THREE.RepeatWrapping;
 texture5.repeat.set( 4, 4 )
