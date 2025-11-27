@@ -2,6 +2,7 @@
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/controls/OrbitControls.js'
 
     var scene = new THREE.Scene();
+    const webGLRenderer = new THREE.WebGLRenderer();
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
     const gridHelper = new THREE.GridHelper(200,50)
     gridHelper.position.y=-1
@@ -9,13 +10,17 @@ import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.119.1/examples
 
     import { CSS3DRenderer, CSS3DObject } from "../3DCSS.js";
 
-    const space= new THREE.TextureLoader().load('../img/AboveEarth.jpg')
+    const space= new THREE.TextureLoader().load('../img/atmosphere.gif')
     //scene.background=space;
+    
+
+    
 
 
 
 
-const webGLRenderer = new THREE.WebGLRenderer();
+
+
 webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(webGLRenderer.domElement);
 
@@ -81,11 +86,11 @@ function Element2( path, x, y, z, ry,css,autoplay=false,loop) {
             return object;
         }
 
-const tupac= new Element('uQXqu5oU1vE',0,0,0,0,'monitor')
+const tupac= new Element('jzDYPFNdI0Y',0,0,0,0,'monitor')
 //const quest = new Element('jzDYPFNdI0Y',-3,2.9,-6.5,0,'oldtv') //neo question 'jzDYPFNdI0Y'
 //const quest2 = new Element2('../Mirror.mp4',-3,2.9,-6.5,0,'oldtv',false) 
-const quest2= new Element2('https://en.wikipedia.org/wiki/Penrose_tiling',-3,2.9,-6.5,0,'oldtv',false)
-const scope= new Element2('../html/panorama.html',5,0,0,0,'monitor')
+const quest2= new Element('IzoRabUmInU',-3,2.9,-6.5,0,'oldtv',false)
+const scope= new Element('AVNj6drW6iM',5,0,0,0,'monitor')
 const scope2= new vidElement('../Kaleidoscope.mp4',-5,0,0,0,'monitor',true,true)
 
 

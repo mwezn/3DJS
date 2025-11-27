@@ -98,11 +98,11 @@ document.body.appendChild(cssRenderer.domElement);
         keyboard.scale.set(8,8,8)
         scene.add(keyboard);
 
-      /*mixer = new THREE.AnimationMixer(keyboard);
+      mixer = new THREE.AnimationMixer(keyboard);
                 keypress.forEach((clip,i) => {
                     console.log(clip,i)
                     mixer.clipAction(clip).play();
-        }); */
+        }); 
     }, undefined, function ( error ) {
         console.error( error );
     } );

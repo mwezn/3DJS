@@ -117,7 +117,7 @@ function componentToHex(c) {
 
 
 
-let sprite = new THREE.TextureLoader().load('../img/light.png')
+let sprite = new THREE.TextureLoader().load('../img/star.png')
 
 let bluestarMaterial= new THREE.PointsMaterial({
     color: 0xaa55ff,
@@ -179,12 +179,13 @@ plane0.position.x=0
 
 function animate() {
     
-    stars.position.z+=10
-    rstars.position.z+=9
-    gstars.position.z+=10
+    stars.position.z+=10.10
+    rstars.position.z+=15.9
+    gstars.position.z+=15.10
 
-    if(stars.position.z==1000) stars.position.z=0;
-     if(gstars.position.z==1000) gstars.position.z=-500;
+    if(stars.position.z==200) stars.position.z=0;
+     if(gstars.position.z==100) gstars.position.z=-500;
+     if(rstars.position.z==100) rstars.position.z=-500;
     
 
     

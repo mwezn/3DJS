@@ -60,7 +60,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
     
   })
   .catch((error) => {
-    console.error('Error accessing microphone:', error);
+    console.error('Error accessing camera:', error);
   });
 
 
